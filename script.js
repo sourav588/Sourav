@@ -146,3 +146,40 @@ faqs.forEach(faq => {
     });
   });
 });
+
+
+
+
+const slides = document.querySelectorAll('.slide');
+const dotsContainer = document.querySelector('.dots');
+
+let currentIndex = 0;
+
+// Create dots dynamically
+slides.forEach((_, i) => {
+  const dot = document.createElement('span');
+  dot.classList.add('dot');
+  if (i === 0) dot.classList.add('active');
+  dot.addEventListener('click', () => goToSlide(i));
+  dotsContainer.appendChild(dot);
+});
+
+const dots = document.querySelectorAll('.dot');
+
+function goToSlide(index) {
+  currentIndex = index;
+  updateSlider();
+}
+
+function updateSlider() {
+  const slideWidth = slides[0].clientWidth;
+  document.querySelector('.slides').style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+  dots.forEach(dot => dot.classList.remove('active'));
+  dots[currentIndex].classList.add('active');
+}
+
+// Auto slide
+setInterval(() => {
+  currentIndex = (currentIndex + 1) % slides.length;
+  updateSlider();
+}, 4000); // every 4 seconds
