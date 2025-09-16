@@ -685,3 +685,10 @@ circle { fill: none; stroke-width: 12; stroke-linecap: round; }
 .dot.active {
   background: #3333ff;
 }
+
+.project-slider h2{
+    font-size: 50px;
+    margin-bottom: 40px;
+ }
+
+
